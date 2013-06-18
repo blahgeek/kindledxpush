@@ -14,12 +14,12 @@
 
 最后一个设备ID，需要在网页上查看。进入`Your Kindle Library`，选择一个文档，点击Action-Deliver，在出现的窗口中审查元素（查看源代码）。
 
-![](1.png)\
+![](https://github.com/blahgeek/kindledxpush/raw/master/doc/1.png)
 
 
 相应选项的value即设备ID. 
 
-![](2.png)\
+![](https://github.com/blahgeek/kindledxpush/raw/master/doc/2.png)
 
 
 
