@@ -77,7 +77,7 @@ def deliverAll(contents):
     db.commit()
 
 if __name__ == '__main__':
-    logging.basicConfig(filename=path.join(path.dirname(path.realpath(__file__)), 'main.db'), 
+    logging.basicConfig(filename=path.join(path.dirname(path.realpath(__file__)), 'main.log'), 
                         level='INFO', 
                         format='%(asctime)s [%(levelname)s] %(message)s')
     login(EMAIL, PASSWORD)
