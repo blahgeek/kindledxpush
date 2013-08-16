@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 from os import path
 from datetime import datetime
 from config import EMAIL, PASSWORD, DEVICE
+import logging
 import sqlite3
 
 db = sqlite3.connect(\
@@ -62,17 +63,20 @@ def deliverAll(contents):
     contents = filter(lambda x: not contentInDB(x['contentName']), contents)
     for content in contents:
         try:
-            print 'delivering', content['contentName']
+            logging.info('delivering ' + content['contentName'])
             deliverContent(content)
         except:
-            print 'Error, ignore.'
+            logging.error('Error, ignore')
             pass
         else:
-            print 'Done. Save to db.'
+            logging.info('Done. Save to db.')
             cursor.execute('insert into content values ("%s")' % content['contentName'])
 
     db.commit()
 
 if __name__ == '__main__':
+    logging.basicConfig(filename=path.join(path.dirname(path.realpath(__file__)), 'main.db'), 
+                        level='INFO', 
+                        format='%(asctime)s [%(levelname)s] %(message)s')
     login(EMAIL, PASSWORD)
     deliverAll(getContents())
